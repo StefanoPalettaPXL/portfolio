@@ -49,8 +49,8 @@ export default function Model(props) {
   }, [camera]);
 
   useFrame(() => {
-    model.current.rotation.x += (targetRotation.x - model.current.rotation.x) * 0.01;
-    model.current.rotation.y += (targetRotation.y - model.current.rotation.y) * 0.01;
+    model.current.rotation.x += (targetRotation.x - model.current.rotation.x) * 0.05;
+    model.current.rotation.y += (targetRotation.y - model.current.rotation.y) * 0.05;
   });
 
   return (

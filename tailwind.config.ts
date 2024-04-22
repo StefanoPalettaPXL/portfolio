@@ -30,6 +30,7 @@ const config: Config = {
       animation: {
         'spin-slow': 'spin 40s linear infinite',
         'spin-slow-reverse': 'spin-reverse 40s linear infinite',
+        'spin-slow-pause': 'spin 80s linear infinite',
       },
     },
   },

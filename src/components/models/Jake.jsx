@@ -25,8 +25,8 @@ export default function Model(props) {
     const mouseY = event.clientY / window.innerHeight;
 
     const newRotation = {
-      x: (mouseY - 0.5) / 25,
-      y: (mouseX - 0.5) / 25,
+      x: (mouseY - 0.5) / 30,
+      y: (mouseX - 0.5) / 30,
     };
 
     setTargetRotation(newRotation);

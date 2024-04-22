@@ -9,10 +9,10 @@ const Navigation = () => {
 
 	return (
 		<div className='w-full fixed h-screen flex items-center justify-center'>
-			<div className='flex items-center justify-between relative hover:pause animate-spin-slow'>
+			<div className='flex items-center justify-between relative hover:pause animate-spin-slow group'>
 				{BtnList.map((btn, index) => {
 					const angleRad = (angleIncrement * index * Math.PI) / 180;
-					const radius = 'calc(22vw - 1rem)';
+					const radius = 'calc(21vw - 1rem)';
 
 					const x = `calc(${radius}*${Math.cos(angleRad)})`;
 					const y = `calc(${radius}*${Math.sin(angleRad)})`;

@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Rubik } from 'next/font/google';
 import './globals.css';
 
 import clsx from 'clsx';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const rubik = Rubik({ subsets: ['latin'], variable: '--font-rubik' });
 
 export const metadata: Metadata = {
 	title: 'Portfolio | Stefano Paletta',

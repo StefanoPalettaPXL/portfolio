@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         inter: ["var(--font-inter)"],
+        rubik: ["var(--font-rubik)"],
       },
       colors: {
         background: 'rgb(var(--background))',
@@ -17,10 +18,13 @@ const config: Config = {
         muted: 'rgb(var(--muted))',
         accent: 'rgb(var(--accent))',
       },
-      boxShadow: {
-        'glass-inset': 'inset 0 17px 5px -9px rgba(254, 254, 91, 0.05)',
-        'glass-sm': '5px 5px 20px 0px rgba(254, 254, 91, 0.3)',
+      backgroundImage:{
+        'firefly-radial': "radial-gradient(50% 50% at 50% 50%, rgba(253, 255, 80, 0.5) 0%, rgba(217,217,217, 0) 100%)"
       },
+      boxShadow: {
+        'glass-inset': 'inset 0 17px 5px -9px rgba(230, 126, 34, 0.05)',
+        'glass-sm': '5px 5px 20px 0px rgba(230, 126, 34, 0.3)',
+      },      
       keyframes: {
         'spin-reverse': {
           '0%': { transform: 'rotate(0deg)' },
@@ -31,6 +35,10 @@ const config: Config = {
         'spin-slow': 'spin 40s linear infinite',
         'spin-slow-reverse': 'spin-reverse 40s linear infinite',
         'spin-slow-pause': 'spin 80s linear infinite',
+      },
+      screens: {
+        'xs': '480px',
+        '3xl': '1920px',
       },
     },
   },

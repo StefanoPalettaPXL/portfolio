@@ -1,4 +1,6 @@
+"use client";
 import React from 'react';
+import { motion } from 'framer-motion';
 
 type Activity = {
 	title: string;
@@ -21,16 +23,39 @@ interface ActivityListProps {
 	activities: Category[];
 }
 
+const container = {
+	hidden: { opacity: 0 },
+	show: {
+		opacity: 1,
+		transition: {
+			staggerChildren: 0.05
+		}
+	}
+};
+
+const item = {
+	hidden: { scale: 0 },
+	show: { scale: 1 }
+};
+
 const ActivityList = ({ activities }: ActivityListProps) => {
 	return (
 		<div
 			className='container shadow-xl shadow-slate-900 m-5 rounded-xl bg-slate-900 
 				bg-opacity-20 block mx-auto py-5 px-5 overflow-y-auto max-h-[750px]'>
 			{activities.map((activity) => (
-				<div key={activity.category} className='mb-8'>
+				<motion.div
+					variants={container}
+					initial='hidden'
+					animate='show'
+					key={activity.category}
+					className='mb-8'>
 					<h1 className='text-3xl font-bold mb-4 text-orange-200'>{activity.category}</h1>
 					{activity.projects.map((project, index) => (
-						<div key={index} className='mb-4'>
+						<motion.div
+							variants={item}
+							key={index}
+							className='mb-4'>
 							{'projects' in project ? ( // Check if the project is a subcategory
 								<>
 									<h2 className='text-xl font-semibold mb-2'>{project.title}</h2>
@@ -70,9 +95,9 @@ const ActivityList = ({ activities }: ActivityListProps) => {
 									</p>
 								</div>
 							)}
-						</div>
+						</motion.div>
 					))}
-				</div>
+				</motion.div>
 			))}
 		</div>
 	);

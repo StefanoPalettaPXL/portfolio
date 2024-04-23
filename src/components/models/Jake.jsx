@@ -9,13 +9,13 @@ Title: Jake the dog
 */
 "use client";
 
-import React, { useRef, useState } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useRef, useState } from 'react';
+import { useGLTF } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
 
 export default function Model(props) {
   const { nodes, materials } = useGLTF('/models/jtd.glb');
-  const { camera } = useThree();
+  const { camera, viewport } = useThree();
 
   const model = useRef();
   const [targetRotation, setTargetRotation] = useState({ x: 0, y: 0 });
@@ -69,7 +69,7 @@ export default function Model(props) {
       <mesh geometry={nodes['Box016_Material_#40_0'].geometry} material={materials.Material_40} position={[0, 0, -2.243]} scale={0.014} />
       <mesh geometry={nodes['Cone014_Material_#58_0'].geometry} material={materials.PaletteMaterial008} position={[0.304, 0.111, -0.675]} rotation={[-Math.PI / 2, 0, 0]} scale={[-0.025, 0.029, 0.025]} />
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/models/jtd.glb')
+useGLTF.preload('/models/jtd.glb');

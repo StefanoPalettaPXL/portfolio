@@ -1,10 +1,20 @@
+"use client";
 import Image from 'next/image';
 import bg from '../../public/background.png';
 import RenderModel from '@/components/RenderModel';
 import Jake from '@/components/models/Jake';
 import Navigation from '@/components/navigation/Index';
+import { motion, useAnimation } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+	const [showJake, setShowJake] = useState(false);
+	const controls = useAnimation();
+
+	useEffect(() => {
+		controls.start({ opacity: 1 }).then(() => setShowJake(true)); // Start animation when the component mounts
+	}, []);
+
 	return (
 		<main className='flex min-h-screen flex-col items-center justify-between relative'>
 			<Image
@@ -14,15 +24,24 @@ export default function Home() {
 				fill
 			/>
 
-			<h1 className='fixed top-4 left-4 font-bold font-serif text-4xl'>
-				Hello, I'm Stefano!
-			</h1>
+			<div className='fixed top-12 left-16'>
+				<p className='font-serif font-bold italic text-orange-100 text-7xl'>Stefano Paletta</p>
+				<p className='mt-4 italic font-light text-orange-400 opacity-40 font-rubik text-3xl'>Software Developer</p>
+			</div>
 
 			<div className='w-full h-screen'>
 				<Navigation />
-				<RenderModel>
-					<Jake />
-				</RenderModel>
+				<motion.div
+					initial={{ opacity: 0 }}
+					animate={controls}
+					className="w-full h-full"
+				>
+					{showJake && (
+						<RenderModel>
+							<Jake />
+						</RenderModel>
+					)}
+				</motion.div>
 			</div>
 		</main>
 	);

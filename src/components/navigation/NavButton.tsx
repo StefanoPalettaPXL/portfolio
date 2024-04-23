@@ -3,6 +3,9 @@ import React from 'react';
 
 // Icons
 import { Github, Home, Linkedin, Phone, ScrollText, UserRound } from 'lucide-react';
+import ResponsiveComponent from '../ResponsiveComponent';
+import clsx from 'clsx';
+import { motion } from 'framer-motion';
 
 interface NavButtonProps {
 	x: string;
@@ -11,7 +14,15 @@ interface NavButtonProps {
 	link: string;
 	icon: string;
 	newTab: boolean;
+	labelDirection?: 'left' | 'right';
 }
+
+const item = {
+	hidden: { scale: 0 },
+	show: { scale: 1 }
+};
+
+const NavLink = motion(Link);
 
 const getIcon = (icon: string) => {
 	switch (icon) {
@@ -32,33 +43,62 @@ const getIcon = (icon: string) => {
 	}
 };
 
-const NavButton = ({ x, y, label, link, icon, newTab }: NavButtonProps) => {
+const NavButton = ({ x, y, label, link, icon, newTab, labelDirection = 'right' }: NavButtonProps) => {
 	return (
-		<div
-			className='absolute cursor-pointer z-50'
-			style={{ transform: `translate(${x}, ${y})` }}>
-			<Link
-				href={link}
-				target={newTab ? '_blank' : '_self'}
-				className='relative text-foreground rounded-full flex items-center justift-center
-                bg-background/20 border border-accent/30 border-solid backdrop-blur-[6px] right-10
-                shadow-glass-inset hover:shadow-glass-sm'
-				aria-label={label}>
-				<span
-					className='relative w-20 h-20 p-4 
+		<ResponsiveComponent>
+			{({ size }) => (
+				size && size >= 480 ? (
+					<div
+						className='absolute cursor-pointer z-50'
+						style={{ transform: `translate(${x}, ${y})` }}>
+						<NavLink
+							variants={item}
+							href={link}
+							target={newTab ? '_blank' : '_self'}
+							className='text-foreground rounded-full flex items-center justift-center custom-bg'
+							aria-label={label}>
+							<span
+								className='relative w-20 h-20 p-4 
                             animate-spin-slow-reverse group-hover:pause hover:text-accent'>
-					{getIcon(icon)}
+								{getIcon(icon)}
 
-					<span className='peer bg-transparent absolute top-0 left-0 w-full h-full' />
+								<span className='peer bg-transparent absolute top-0 left-0 w-full h-full' />
 
-					<span
-						className='absolute font-bold hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2
+								<span
+									className='absolute font-bold hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2
 							-translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap'>
-						{label}
-					</span>
-				</span>
-			</Link>
-		</div>
+									{label}
+								</span>
+							</span>
+						</NavLink>
+					</div>
+				) : (
+					<div
+						className='w-fit cursor-pointer z-50'>
+						<NavLink
+							variants={item}
+							href={link}
+							target={newTab ? '_blank' : '_self'}
+							className='text-foreground rounded-full flex items-center justift-center custom-bg'
+							aria-label={label}>
+							<span
+								className='relative w-16 h-16 p-4 hover:text-accent'>
+								{getIcon(icon)}
+
+								<span className='peer bg-transparent absolute top-0 left-0 w-full h-full' />
+
+								<span
+									className={clsx("absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap", labelDirection === 'left' ?
+										"right-full left-auto" : ""
+									)}>
+									{label}
+								</span>
+							</span>
+						</NavLink>
+					</div>
+				)
+			)}
+		</ResponsiveComponent>
 	);
 };
 

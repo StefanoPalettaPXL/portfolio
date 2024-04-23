@@ -9,29 +9,29 @@ Title: Scarlet Sword | Adventure Time
 */
 "use client";
 
-import React, { useRef } from 'react'
-import { useFrame } from '@react-three/fiber'
-import { useGLTF } from '@react-three/drei'
+import React, { useRef } from 'react';
+import { useFrame, useThree } from '@react-three/fiber';
+import { useGLTF } from '@react-three/drei';
 
 export default function Model(props) {
-  const { nodes, materials } = useGLTF('/models/sword.glb')
+  const { nodes, materials } = useGLTF('/models/sword.glb');
 
   // Slowly rotate the sword
-  const model = useRef()
+  const model = useRef();
   useFrame(() => {
-    model.current.rotation.z += 0.0025
-  })
+    model.current.rotation.z += 0.0025;
+  });
 
   return (
     <group {...props}
       dispose={null}
       ref={model}
-      position={[-0.5, 3.35, -1]}
+      position={[-0.5, 4, -1]}
       rotation={[1.6, 3.15, 1.55]}
-      scale={0.2}>
+      scale={0.3}>
       <mesh geometry={nodes.defaultMaterial.geometry} material={materials.standardSurface1} position={[0, 0, -1]} rotation={[-Math.PI / 2, 0, -Math.PI / 2]} scale={[1, 0.566, 1]} />
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/models/sword.glb')
+useGLTF.preload('/models/sword.glb');

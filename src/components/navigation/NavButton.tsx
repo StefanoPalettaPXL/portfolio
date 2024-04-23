@@ -65,8 +65,9 @@ const NavButton = ({ x, y, label, link, icon, newTab, labelDirection = 'right' }
 								<span className='peer bg-transparent absolute top-0 left-0 w-full h-full' />
 
 								<span
-									className='absolute font-bold hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2
-							-translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap'>
+									className={clsx("absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap", labelDirection === 'left' ?
+										"right-full left-auto" : ""
+									)}>
 									{label}
 								</span>
 							</span>

@@ -25,8 +25,9 @@ export default function Activities() {
 				layout="fill"
 			/>
 			<div className="relative">
-				<div className="absolute top-10 left-1/2 transform -translate-x-1/2">
-					<h1 className="text-center text-4xl font-bold text-white">Activiteiten</h1>
+				<div className="absolute top-10 sm:top-6 left-1/2 transform -translate-x-1/2">
+					<h1 className="text-center font-serif italic 
+					text-3xl sm:text-4xl font-bold opacity-75 text-orange-100">Activiteiten</h1>
 				</div>
 
 				<div className="flex mt-24">
@@ -36,7 +37,7 @@ export default function Activities() {
 						animate={controls}
 					>
 						{showSword && (
-							<RenderModel>
+							<RenderModel className='z-10'>
 								<Sword />
 							</RenderModel>
 						)}

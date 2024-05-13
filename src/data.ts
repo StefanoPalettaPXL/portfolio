@@ -138,7 +138,7 @@ export const activityData = [
 export const BtnList = [
     { label: "About", link: "/about", icon: "about", newTab: false },
     { label: "Activities", link: "/activities", icon: "activities", newTab: false },
-    { label: "Contact", link: "/contact", icon: "contact", newTab: false },
+    // { label: "Contact", link: "/contact", icon: "contact", newTab: false },
     {
       label: "Github",
       link: "https://github.com/StefanoPalettaPXL",
